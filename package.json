@@ -1,11 +1,11 @@
 {
   "name": "haxe-import",
   "main": "./lib/haxe-import",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Auto-import haxe packages with a shortcut",
   "keywords": [
-      "haxe",
-      "import"
+    "haxe",
+    "import"
   ],
   "activationCommands": {
     "atom-workspace": "haxe-import:import"
@@ -15,6 +15,5 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
