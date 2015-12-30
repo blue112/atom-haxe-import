@@ -1,0 +1,20 @@
+{
+  "name": "haxe-import",
+  "main": "./lib/haxe-import",
+  "version": "0.0.1",
+  "description": "Auto-import haxe packages with a shortcut",
+  "keywords": [
+      "haxe",
+      "import"
+  ],
+  "activationCommands": {
+    "atom-workspace": "haxe-import:import"
+  },
+  "repository": "https://github.com/atom/haxe-import",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
