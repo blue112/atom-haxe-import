@@ -10,7 +10,7 @@
   "activationCommands": {
     "atom-workspace": "haxe-import:import"
   },
-  "repository": "https://github.com/atom/haxe-import",
+  "repository": "https://github.com/blue112/atom-haxe-import",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
