@@ -21,12 +21,17 @@ module.exports = HaxeImport =
         line = editor.lineTextForBufferRow(point.row)
         reg = /([a-z.]+)\.([A-Z][a-z]+)/
         matches = line.match(reg)
+        console.log(matches)
+        if matches == null
+          return 0
+
         startPos = line.search(reg)
         r = [[point.row, startPos], [point.row, startPos + matches[1].length + 1]]
         editor.setTextInBufferRange(r, "")
 
         # Add import
         imp = "import "+matches[0]+";\n"
+        console.log(imp)
         if editor.getText().match(new RegExp(imp))
             return
 
@@ -34,7 +39,25 @@ module.exports = HaxeImport =
             o.replace(matches[2])
         )
 
-        if !editor.lineTextForBufferRow(0).match(/^import/)
-            imp += "\n"
+        impMatch = editor.getText().search(/\nimport/)
+        if impMatch != -1
+          lineAt = editor.getText().substr(0, impMatch).split("\n").length
+          console.log(lineAt)
+          editor.setTextInBufferRange([[lineAt, 0], [lineAt, 0]], imp)
+          return
 
-        editor.setTextInBufferRange([[0, 0], [0, 0]], imp)
+        # Let's check if there's a package line
+        lineToAdd = 0
+        packMatch = editor.getText().search(/\npackage/)
+        if (packMatch == -1)
+          packMatch = editor.getText().search(/^package/)
+
+        if packMatch == -1
+          editor.setTextInBufferRange([[0, 0], [0, 0]], imp)
+        else
+          lineAt = editor.getText().substr(0, packMatch).split("\n").length + 1
+          console.log(lineAt)
+
+          imp = imp + "\n"
+
+          editor.setTextInBufferRange([[lineAt, 0], [lineAt, 0]], imp)
