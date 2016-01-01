@@ -21,7 +21,6 @@ module.exports = HaxeImport =
         line = editor.lineTextForBufferRow(point.row)
         reg = /([a-z.]+)\.([A-Z][a-z]+)/
         matches = line.match(reg)
-        console.log(matches)
         if matches == null
           return 0
 
@@ -31,7 +30,6 @@ module.exports = HaxeImport =
 
         # Add import
         imp = "import "+matches[0]+";\n"
-        console.log(imp)
         if editor.getText().match(new RegExp(imp))
             return
 
@@ -42,7 +40,6 @@ module.exports = HaxeImport =
         impMatch = editor.getText().search(/\nimport/)
         if impMatch != -1
           lineAt = editor.getText().substr(0, impMatch).split("\n").length
-          console.log(lineAt)
           editor.setTextInBufferRange([[lineAt, 0], [lineAt, 0]], imp)
           return
 
@@ -56,7 +53,6 @@ module.exports = HaxeImport =
           editor.setTextInBufferRange([[0, 0], [0, 0]], imp)
         else
           lineAt = editor.getText().substr(0, packMatch).split("\n").length + 1
-          console.log(lineAt)
 
           imp = imp + "\n"
 
