@@ -19,7 +19,7 @@ module.exports = HaxeImport =
     if editor = atom.workspace.getActiveTextEditor()
         point = editor.getCursorBufferPosition()
         line = editor.lineTextForBufferRow(point.row)
-        reg = /([a-z.]+)\.([A-Z][a-z]+)/
+        reg = /([a-z.]+)\.([A-Z][a-zA-Z]+)/
         matches = line.match(reg)
         if matches == null
           return 0
